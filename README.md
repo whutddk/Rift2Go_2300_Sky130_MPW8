@@ -1,12 +1,65 @@
-# Caravel User Project
+# Rift2Core
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![UPRJ_CI](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml) [![Caravel Build](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml)
+## Rift2300
 
-| :exclamation: Important Note            |
-|-----------------------------------------|
+This is the simplest version of [Rift2Core](https://github.com/whutddk/Rift2Core/tree/develop).
+Commit: b95a1555aeb79d975e8b273d412f0e6df42d0322 (Almost...)
 
-## Please fill in your project documentation in this README.md file 
 
-Refer to [README](docs/source/index.rst#section-quickstart) for a quickstart of how to use caravel_user_project
+----------------------------
 
-Refer to [README](docs/source/index.rst) for this sample project documentation. 
+
+
+The configuration is as followed, and IF2 is mixed with **IF2NCache**
+```
+class Rift2300 extends Config((site, here, up) => {
+  case RiftParamsKey => RiftSetting(
+    hasL2  = false,
+    hasDebugger = true,
+    hasPreFetch = false,
+    hasuBTB = false,
+    ftChn = 4,
+    rnChn = 1,
+    opChn = 1,
+    wbChn = 1,
+    cm_chn = 1,
+    pmpNum = 0,
+    regNum = 34,
+    hpmNum  = 0,
+    l1BeatBits = 64,
+    memBeatBits = 64,
+    tlbEntry = 2,
+    l1DW = 128,
+    ifetchParameters = IFParameters(
+      uBTB_entry = 2,
+      // uBTB_tag_w = 16,
+      btb_cl = 0,
+      bim_cl = 2,
+      ras_dp = 0,
+      // tage_table = 6, 
+    ),
+    icacheParameters = IcacheParameters(
+      bk = 1,
+      cb = 1,
+      cl = 2,
+    ),
+    dcacheParameters = DcacheParameters(
+      bk = 1,
+      cb = 1,
+      cl = 2,
+      sbEntry = 1,
+      stEntry = 2,
+    ),
+
+    dptEntry = 1,
+    fpuNum = 0,
+    mulNum = 0,
+
+    isMinArea = true,
+    isLowPower = false,
+  )
+})
+
+```
+
+
